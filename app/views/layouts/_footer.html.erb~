@@ -1,7 +1,7 @@
 <footer class="footer">
   <small>
-    <a href="https://blazing-light-4700.herokuapp.com/">Ethio Tender App</a> by
-    <a href= "http://www.linkedin.com/pub/mathias-abdissa/30/82/4b3">Mathias Abraham </a>
+   <%= link_to"Ethio Tender App", root_path %> by
+    <a href= "http://www.linkedin.com/pub/mathias-abdissa/30/82/4b3"><b>Mathias Abraham </b></a>
   </small>
   <nav>
     <ul>

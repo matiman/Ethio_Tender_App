@@ -1,9 +1,8 @@
 <% provide(:title, 'Help') %>
 <h1>Help</h1>
 <p>
-  Get help on the Ruby on Rails Tutorial at the
-  <a href="https://blazing-light-4700.herokuapp.com/">Ethio Tender App</a>.
-  To get help on this sample app, see the
-  <a href="https://blazing-light-4700.herokuapp.com/">Ethio Tender App</a>.
+  Get help on our app at the
+  <%= link_to"Ethio Tender App", rooth_path %>
+ 
 </p>
 
