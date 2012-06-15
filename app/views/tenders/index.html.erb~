@@ -1,0 +1,33 @@
+<h1>Listing tenders</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Company name</th>
+    <th>Opening date</th>
+    <th>Closing date</th>
+    <th>Bid amount</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tenders.each do |tender| %>
+  <tr>
+    <td><%= tender.title %></td>
+    <td><%= tender.company_name %></td>
+    <td><%= tender.opening_date %></td>
+    <td><%= tender.closing_date %></td>
+    <td><%= tender.bid_amount %></td>
+    <td><%= tender.description %></td>
+    <td><%= link_to 'Show', tender %></td>
+    <td><%= link_to 'Edit', edit_tender_path(tender) %></td>
+    <td><%= link_to 'Destroy', tender, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tender', new_tender_path %>

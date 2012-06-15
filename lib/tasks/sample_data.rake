@@ -27,6 +27,27 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.microposts.create!(content: content) }
     end
+
+#Create random Tender and populate the db
+     20.times do |n|
+      title  = "#{Faker::Company.bs()} tender "
+      company_name = Faker::Company.name
+      opening_date=Time.at(rand * Time.now.to_i)
+      closing_date=Time.at(opening_date + ( 8*7*24*60*60)) #add 8 weeks to the deadline
+      bid_amount= rand(10000..100000)
+      description=Faker::Lorem.paragraph(sentence_count = 3)
+	      
+      
+      Tender.create!(title: title,
+                   company_name: company_name,
+                   opening_date: opening_date,
+                   closing_date: closing_date,
+		   bid_amount: bid_amount    ,
+		   bid_amount: bid_amount    ,
+		   description: description )
+    end
+    
+
   end
 end
     

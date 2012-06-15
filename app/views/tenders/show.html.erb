@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @tender.title %>
+</p>
+
+<p>
+  <b>Company name:</b>
+  <%= @tender.company_name %>
+</p>
+
+<p>
+  <b>Opening date:</b>
+  <%= @tender.opening_date %>
+</p>
+
+<p>
+  <b>Closing date:</b>
+  <%= @tender.closing_date %>
+</p>
+
+<p>
+  <b>Bid amount:</b>
+  <%= @tender.bid_amount %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @tender.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_tender_path(@tender) %> |
+<%= link_to 'Back', tenders_path %>

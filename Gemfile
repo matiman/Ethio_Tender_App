@@ -7,6 +7,9 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.5'
 
+# to work with money 
+gem 'money'
+
 group :development, :test do
   gem 'rspec-rails', '2.9.0'
   gem 'sqlite3', '1.3.5'
