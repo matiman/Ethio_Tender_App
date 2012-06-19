@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614232257) do
+ActiveRecord::Schema.define(:version => 20120617174812) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "phone_number"
+    t.string   "email"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+  end
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -29,8 +39,9 @@ ActiveRecord::Schema.define(:version => 20120614232257) do
     t.date     "closing_date"
     t.decimal  "bid_amount"
     t.text     "description"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "category",     :default => "General"
   end
 
   create_table "users", :force => true do |t|
@@ -41,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120614232257) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.integer  "company_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

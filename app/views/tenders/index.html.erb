@@ -7,7 +7,7 @@
     <th>Opening date</th>
     <th>Closing date</th>
     <th>Bid amount</th>
-    <th>Description</th>
+    <%#   <th>Description</th> %>
     <th></th>
     <th></th>
     <th></th>
@@ -20,7 +20,9 @@
     <td><%= tender.opening_date %></td>
     <td><%= tender.closing_date %></td>
     <td><%= tender.bid_amount %></td>
-    <td><%= tender.description %></td>
+
+    <%#  tender.description %>
+
     <td><%= link_to 'Show', tender %></td>
     <td><%= link_to 'Edit', edit_tender_path(tender) %></td>
     <td><%= link_to 'Destroy', tender, confirm: 'Are you sure?', method: :delete %></td>

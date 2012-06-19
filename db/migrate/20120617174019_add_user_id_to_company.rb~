@@ -1,0 +1,4 @@
+class AddUserIdToCompany < ActiveRecord::Migration
+  def change
+  end
+end

@@ -2,39 +2,75 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
 
-    admin = User.create!(name: "Example User",
+
+#  Create companies
+	10.times do |n|
+      	 name  = Faker::Company.name
+	 email = Faker::Internet.email
+         address="#{Faker::Address.street_name} | #{Faker::Address.city}"
+	 phone=Faker::PhoneNumber.phone_number
+         Company.create!(name: name,
+                     email: email,
+                     address: address,
+                     phone_number: phone)
+    	end
+
+
+
+#Creating Admin
+    admin = User.new(name: "Example User",
                          email: "m@m.m",
                          password: "mmmmmm",
                          password_confirmation: "mmmmmm")
-    admin.toggle!(:admin)
- 
-    User.create!(name: "Example User",
+    admin.company_id=1
+    admin.save
+			 
+   admin.toggle!(:admin)
+#   Since Admin is not accessible we need to use toggle
+
+    user=User.new(name: "Example User",
                  email: "example@railstutorial.org",
                  password: "foobar",
                  password_confirmation: "foobar")
-    99.times do |n|
+		
+		 user.company_id=2
+		 user.save
+
+
+
+
+#Create users and assign them to a company
+	
+
+    10.times do |n|
       name  = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
-      User.create!(name: name,
+      user=User.new(name: name,
                    email: email,
                    password: password,
                    password_confirmation: password)
+
+      user.company_id=Company.find(n+1).id
+      user.save
     end
 
-    users = User.all(limit: 6)
+=begin    users = User.all(limit: 6)
     50.times do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.microposts.create!(content: content) }
     end
+=end
+
+    
 
 #Create random Tender and populate the db
-     20.times do |n|
+     40.times do |n|
       title  = "#{Faker::Company.bs()} tender "
       company_name = Faker::Company.name
       opening_date=Time.at(rand * Time.now.to_i)
-      closing_date=Time.at(opening_date.to_s *8*7*24*60*60) #add 8 weeks to the deadline
-      bid_amount= rand(10000..100000)
+      closing_date=Time.at(opening_date + ( 8*7*24*60*60)) #add 8 weeks to the deadline
+      bid_amount= rand(10000...100000)
       description=Faker::Lorem.paragraph(sentence_count = 3)
 	      
       

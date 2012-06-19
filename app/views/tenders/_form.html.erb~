@@ -5,7 +5,7 @@
 		<%= form_for(@tender) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 
-			<% #Need to be in the model %>
+			<% #N eed to be in the model %>
 			<%= f.select :category, options_for_select(["Finance","IT"]) %>
 
 			<%= f.label :title %>			

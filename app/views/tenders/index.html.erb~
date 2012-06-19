@@ -1,6 +1,6 @@
 <h1>Listing tenders</h1>
 
-<table>
+<table border="1">
   <tr>
     <th>Title</th>
     <th>Company name</th>
@@ -20,7 +20,9 @@
     <td><%= tender.opening_date %></td>
     <td><%= tender.closing_date %></td>
     <td><%= tender.bid_amount %></td>
-    <td><%= tender.description %></td>
+
+    <%#  tender.description %>
+
     <td><%= link_to 'Show', tender %></td>
     <td><%= link_to 'Edit', edit_tender_path(tender) %></td>
     <td><%= link_to 'Destroy', tender, confirm: 'Are you sure?', method: :delete %></td>

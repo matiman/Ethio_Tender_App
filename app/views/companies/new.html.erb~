@@ -1,0 +1,6 @@
+<h1>New company</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', signup_path %>
+<%# Sign up after creating the company

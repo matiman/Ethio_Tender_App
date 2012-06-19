@@ -1,0 +1,20 @@
+class AddCategoryToTender < ActiveRecord::Migration
+  def change
+
+	  add_column :tenders, :category, :string, default: 'General'
+	  #after the column is added we need to fill the column 
+	  #for the existing rows with the dfault value
+	  #
+	  say_with_time "Updating categories..." do
+	 	 Tender.reset_column_information
+		  Tender.all.each do |t|
+			  p.update_attribute :category, 'General'
+		  end
+	  end
+  end
+
+  def down
+    remove_column :tenders, :category
+  end
+  
+end

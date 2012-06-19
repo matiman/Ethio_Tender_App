@@ -1,0 +1,6 @@
+class Company < ActiveRecord::Base
+	attr_accessible :name, :address, :phone_number, :email
+	has_many :users
+
+	#TODO Validation and uniquness of a company
+end

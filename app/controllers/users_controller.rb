@@ -10,13 +10,18 @@ class UsersController < ApplicationController
 
 	def new
           @user=User.new
+	  @@company=Company.find_by_id(session[:company]) #I need to get the company from the session so that the user will be registered to that company
 	end
 
 	def create
-		@user = User.new(params[:user])
+	#	@user = User.new(params[:user])
+		@user = @@company.users.build(params[:user])
+
 		if @user.save
+
+
 			sign_in @user
-			flash[:success] = "Welcome to the sample App!"
+			flash[:success] = "Welcome to Ethio Tender App! #{@@company.id}"
 			redirect_to @user
 		else
 			render 'new'
