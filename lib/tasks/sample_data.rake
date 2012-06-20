@@ -8,7 +8,7 @@ namespace :db do
       	 name  = Faker::Company.name
 	 email = Faker::Internet.email
          address="#{Faker::Address.street_name} | #{Faker::Address.city}"
-	 phone=Faker::PhoneNumber.phone_number
+	 phone=Faker::PhoneNumber.phone_number()
          Company.create!(name: name,
                      email: email,
                      address: address,

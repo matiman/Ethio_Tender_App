@@ -22,7 +22,7 @@ namespace :db do
                          email: "m@m.m",
                          password: "mmmmmm",
                          password_confirmation: "mmmmmm")
-    admin.company_id=1
+    admin.company_id=1 # company_id is not accessible so we have to use this way other wise mass assignment while creating is impossible
     admin.save
 			 
    admin.toggle!(:admin)
@@ -32,7 +32,7 @@ namespace :db do
                  email: "example@railstutorial.org",
                  password: "foobar",
                  password_confirmation: "foobar")
-		
+		# company_id is not accessible so we have to use this way other wise mass assignment while creating is impossible
 		 user.company_id=2
 		 user.save
 
@@ -51,6 +51,7 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
 
+      # company_id is not accessible so we have to use this way other wise mass assignment while creating is impossible
       user.company_id=Company.find(n+1).id
       user.save
     end
