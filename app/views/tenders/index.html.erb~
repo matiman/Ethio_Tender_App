@@ -4,10 +4,9 @@
   <tr>
     <th>Title</th>
     <th>Company name</th>
-    <th>Opening date</th>
-    <th>Closing date</th>
+    <th>Remaining dates</th>
     <th>Bid amount</th>
-    <th>Description</th>
+    <%#   <th>Description</th> %>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +16,7 @@
   <tr>
     <td><%= tender.title %></td>
     <td><%= tender.company_name %></td>
-    <td><%= tender.opening_date %></td>
-    <td><%= tender.closing_date %></td>
+    <td><%= remaining_date(tender.opening_date,tender.closing_date) %></td>
     <td><%= tender.bid_amount %></td>
 
     <%#  tender.description %>

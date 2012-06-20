@@ -82,4 +82,15 @@ class TendersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+ 	#should accessed from this controller for now????????????????????
+
+#	calculate the difference between tender opened and closing date to display it on the table
+	def remaining_date(from_date,to_date) 
+		distance_of_time_in_words(from_date, from_date)  
+	end
+
+
+
 end
