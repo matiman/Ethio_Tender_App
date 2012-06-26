@@ -1,10 +1,14 @@
 class TendersController < ApplicationController
 
-   before_filter :signed_in_user
+
+	before_filter :signed_in_user
+
   # GET /tenders
   # GET /tenders.json
   def index
-    @tenders = Tender.all
+    if signed_in?	  
+	    @tenders = current_user.company.tender #display only the current user's company's tenders 
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +19,9 @@ class TendersController < ApplicationController
   # GET /tenders/1
   # GET /tenders/1.json
   def show
+
+# TODO	  We only want to see if that tender id belongs to a company
+	  
     @tender = Tender.find(params[:id])
 
     respond_to do |format|
@@ -43,6 +50,9 @@ class TendersController < ApplicationController
   # POST /tenders.json
   def create
     @tender = Tender.new(params[:tender])
+
+#    TODO Add company id to the tender .. this is not working well
+ #   @tender.company_id=current_user.company
 
     respond_to do |format|
       if @tender.save

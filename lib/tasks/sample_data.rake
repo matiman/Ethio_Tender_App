@@ -75,13 +75,17 @@ namespace :db do
       description=Faker::Lorem.paragraph(sentence_count = 3)
 	      
       
-      Tender.create!(title: title,
+      tender=Tender.new(title: title,
                    company_name: company_name,
                    opening_date: opening_date,
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
 		   bid_amount: bid_amount    ,
 		   description: description )
+
+#      Just to add the 10 companies' to different tenders
+            tender.company_id=Company.find((n/4)+1).id
+	    tender.save
     end
     
 

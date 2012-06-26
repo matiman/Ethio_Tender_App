@@ -1,6 +1,15 @@
 class Company < ActiveRecord::Base
 	attr_accessible :name, :address, :phone_number, :email
 	has_many :users, dependent: :destroy #destroy the user when the company is deleted
+	has_many :tenders, dependent: :destroy
 
 	#TODO Validation and uniquness of a company
+
+#	Make the table of companies or tenders or to display in different form and then render them .. take this comment to the views as well  
+
+	# Tenders only specific to the current company
+	def tender
+		Tender.where("company_id= ?", id)
+	end
+	
 end

@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+
+	before_filter :signed_in_user
   # GET /companies
   # GET /companies.json
   def index
@@ -44,7 +46,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-      flash[:company]=@company.id
+      session[:company]=@company.id
     # Sign up admin user after creating the company 
 	      # format.html { redirect_to @company, notice: 'Company was successfully created.' }
          format.html { redirect_to signup_path, notice: "Company was successfully created. Please Register an adminstrator user." }

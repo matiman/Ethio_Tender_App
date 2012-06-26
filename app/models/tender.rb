@@ -2,6 +2,10 @@ class Tender < ActiveRecord::Base
 	#if they are not accessible we can't edit or create unaccessible fields
 	attr_accessible :title, :company_name, :category, :opening_date, :closing_date, :bid_amount, :description
 
+	belongs_to :company #Tender belongs to company but I can use user id as the updater and creater
+
+	validates :company_id, presence: true
+
 	#TODO Associate it with a company object
 
 
