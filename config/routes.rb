@@ -1,6 +1,8 @@
 SampleApp::Application.routes.draw do
   
-  resources :companies
+  #Don't allow companies to be deleted for now
+  resources :companies, only: [:new, :create, :edit, :show, :index] 
+  
 
   resources :tenders
 

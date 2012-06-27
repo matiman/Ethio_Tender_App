@@ -7,7 +7,7 @@ class TendersController < ApplicationController
   # GET /tenders.json
   def index
     if signed_in?	  
-	    @tenders = current_user.company.tender #display only the current user's company's tenders 
+	    @tenders = current_user.company.tender #display only the current user's company's tenders . There is a method called 'tender' in the tender model
     end
 
     respond_to do |format|
@@ -41,8 +41,10 @@ class TendersController < ApplicationController
     end
   end
 
+ #  TODO Same thing here edit only current companies tenders
   # GET /tenders/1/edit
   def edit
+    
     @tender = Tender.find(params[:id])
   end
 
@@ -51,8 +53,8 @@ class TendersController < ApplicationController
   def create
     @tender = Tender.new(params[:tender])
 
-#    TODO Add company id to the tender .. this is not working well
- #   @tender.company_id=current_user.company
+#    TODO Add company id to the tender .. 
+    @tender.company_id=current_user.company_id
 
     respond_to do |format|
       if @tender.save

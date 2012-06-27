@@ -26,11 +26,16 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    @company = Company.new
+#    Redirect a user to index page if s/he tries to register a company while logged in.
+    if !current_user.nil?
+	redirect_to root_path, notice: "A logged in user can't register a company."
+    else
+       @company = Company.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @company }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @company }
+      end
     end
   end
 
