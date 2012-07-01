@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    Redirect a user to index page if s/he tries to register a company while logged in.
+#    Redirect a user to index page if s/he tries to register a company while logged in.
     if !current_user.nil?
 	redirect_to root_path, notice: "A logged in user can't register a company."
     else
