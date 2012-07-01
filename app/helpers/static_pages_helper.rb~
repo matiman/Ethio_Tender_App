@@ -1,0 +1,7 @@
+module StaticPagesHelper
+
+	def redirectToTenders
+		redirect_to tenders_path
+	end
+		
+end

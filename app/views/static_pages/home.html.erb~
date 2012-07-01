@@ -1,18 +1,9 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
-      </section>
-      </aside>
-      <div class="span8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-      </div>
-  </div>
+
+
+<%
+=end %>
+
 
 <% else %>
 
@@ -22,12 +13,13 @@
 
   <h2>
     This is the home page for the
-    <%= link_to "Ethio Tender App on the Cloud", root_path %>
-    
+    <a href="https://blazing-light-4700.herokuapp.com/">Ethio Tender App on the Cloud</a>
+    .
   </h2>
 
   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails"), rooth_path' %>
+<%= link_to image_tag("rails.png", alt: "Rails"), 'https://blazing-light-4700.herokuapp.com/' %>
 <% end %>
+

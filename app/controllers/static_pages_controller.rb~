@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 def home
     if signed_in?
-      redirect_to tenders_path
+      redirect_to tenders
 /      @micropost  = current_user.microposts.build 
     @feed_items = current_user.feed.paginate(page: params[:page]) */
     end
