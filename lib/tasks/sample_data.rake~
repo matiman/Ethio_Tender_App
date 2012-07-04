@@ -73,13 +73,8 @@ namespace :db do
       closing_date=Time.at(opening_date + ( 8*7*24*60*60)) #add 8 weeks to the deadline
       bid_amount= rand(10000...100000)
       description=Faker::Lorem.paragraph(sentence_count = 3)
-
-      if n%3==0
-	      status="Closed"
-      else if n%3==1
-	      status="Intiated"
-      else status= "Won"
-      end
+      
+      status=Array["Initiated","Closed","Won","Lost"]
 	      
       
       tender=Tender.new(title: title,
@@ -88,14 +83,13 @@ namespace :db do
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
 		   bid_amount: bid_amount    ,
-		   status: status,
+		   status: status[3], #to populate with different statuses from the status array
 		   description: description )
 
-#      Just to add the 10 companies' to different tenders
+#      To associate the 10 companies' to different tenders
             tender.company_id=Company.find((n/4)+1).id
 	    tender.save
 
      end
     end   
-
-  end
+end
