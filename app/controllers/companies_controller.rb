@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
 
+	before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+	before_filter :correct_user, only: [:edit, :update, :show]
 
   # GET /companies
   # GET /companies.json

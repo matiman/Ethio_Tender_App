@@ -1,0 +1,8 @@
+class ChangeCompanyNameToBuyerName < ActiveRecord::Migration
+  def up
+	  rename_column :companies, :company_name, :buyer_name
+  end
+
+  def down
+  end
+end

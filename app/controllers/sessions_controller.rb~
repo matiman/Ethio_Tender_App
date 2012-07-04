@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:password])
 			sign_in user		
 
-			#when a user logs in it will display either the root(tenders) page or the stored location before he logged in
-			redirect_back_or tenders_path 
+			
+			redirect_back_or root_path 
 
 		else
 			flash.now[:error]= 'Invalid email/password combination'

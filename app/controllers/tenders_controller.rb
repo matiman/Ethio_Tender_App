@@ -6,8 +6,14 @@ class TendersController < ApplicationController
   # GET /tenders
   # GET /tenders.json
   def index
-    if signed_in?	  
-	    @tenders = current_user.company.tender #display only the current user's company's tenders . There is a method called 'tender' in the tender model
+    if signed_in?
+  	    #if params[:status].nil?	    
+	#	    @tenders = current_user.company.tender #display only the current user's company's tenders . There is a method called 'tender' in the tender model
+	 #   else
+		    @tenders= Tender.where("company_id= ? AND status= ?", current_user.company.id, "Closed" ) 
+			    #tender_by_company_and_status("Closed", current_user.company.id)
+
+	  #  end
     end
 
     respond_to do |format|

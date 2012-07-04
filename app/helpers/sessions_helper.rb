@@ -42,6 +42,11 @@ module SessionsHelper
 	    session[:return_to] = request.fullpath
 	end
 
+	def correct_user
+	      @user = User.find(params[:id])
+	      redirect_to(root_path) unless current_user?(@user)
+	end
+
 
 
   	  private
