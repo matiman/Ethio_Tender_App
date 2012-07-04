@@ -94,9 +94,8 @@ namespace :db do
 #      Just to add the 10 companies' to different tenders
             tender.company_id=Company.find((n/4)+1).id
 	    tender.save
-    end
-    
+
+     end
+    end   
 
   end
-end
-    
