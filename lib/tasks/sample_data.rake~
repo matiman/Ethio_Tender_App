@@ -74,16 +74,20 @@ amespace :db do
       bid_amount= rand(10000...100000)
       description=Faker::Lorem.paragraph(sentence_count = 3)
 
-	#Just to add different types of statuses
+
+      #Just to add different types of statuses
+
       if n%3 == 0 
 	      status="Closed"
       else if n%3==1
 	      status="Lost"
       else status="Initiated"
+
+      
 	      
       
       tender=Tender.new(title: title,
-                   company_name: company_name,
+                   buyer_name: buyer_name,
                    opening_date: opening_date,
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
@@ -94,9 +98,8 @@ amespace :db do
 #      Just to add the 10 companies' to different tenders
             tender.company_id=Company.find((n/4)+1).id
 	    tender.save
-    end
-    
+
+     end
+    end   
 
   end
-end
-    
