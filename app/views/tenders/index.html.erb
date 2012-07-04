@@ -19,7 +19,7 @@
 <table border="1">
   <tr>
     <th>Title</th>
-    <th>Company name</th>
+    <th>Buyer Name</th>
     <th>Remaining dates</th>
     <th>Bid amount</th>
     <%#   <th>Description</th> %>
@@ -31,8 +31,9 @@
 <% @tenders.each do |tender| %>
   <tr>
     <td><%= tender.title %></td>
-    <td><%= tender.company_name %></td>
+    <td><%= tender.buyer_name %></td>
     <td><%= distance_of_time_in_words(tender.opening_date,tender.closing_date) %></td>
+    <td><%= tender.status %></td>
     <td><%= tender.bid_amount %></td>
 
     <%#  tender.description %>

@@ -10,7 +10,8 @@ class TendersController < ApplicationController
   	    #if params[:status].nil?	    
 	#	    @tenders = current_user.company.tender #display only the current user's company's tenders . There is a method called 'tender' in the tender model
 	 #   else
-		    @tenders= Tender.where("company_id= ? AND status= ?", current_user.company.id, "Closed" ) 
+		    @tenders= Tender.where("company_id= ? ", current_user.company.id ) 
+		    #@tenders= Tender.where("company_id= ? AND status= ?", current_user.company.id, "Closed" ) 
 			    #tender_by_company_and_status("Closed", current_user.company.id)
 
 	  #  end

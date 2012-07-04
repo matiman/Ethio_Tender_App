@@ -26,11 +26,6 @@
 </p>
 
 <p>
-  <b>Status:</b>
-  <%= @tender.status %>
-</p>
-
-<p>
   <b>Description:</b>
   <%= @tender.description %>
 </p>
