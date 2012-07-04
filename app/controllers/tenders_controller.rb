@@ -60,8 +60,9 @@ class TendersController < ApplicationController
   def create
     @tender = Tender.new(params[:tender])
 
-#    TODO Add company id to the tender .. 
+
     @tender.company_id=current_user.company_id
+    @tender.status="Initiated" #When a tender is first created its status is defaulted to intiated
 
     respond_to do |format|
       if @tender.save

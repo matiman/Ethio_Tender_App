@@ -1,7 +1,7 @@
 SampleApp::Application.routes.draw do
   
   #Don't allow companies to be deleted for now
-  resources :companies, only: [:new, :create, :edit] removed index and show pages for not logged in users
+  resources :companies, only: [:new, :create, :edit, :show, :index] 
   
 
   resources :tenders
@@ -12,6 +12,7 @@ SampleApp::Application.routes.draw do
   
 
 
+  match '/register_company',   to: 'companies#new'
   match '/signup',   to: 'users#new'
   match '/signin',   to: 'sessions#new'
   match '/signout',  to: 'sessions#destroy', via: :delete
