@@ -31,7 +31,7 @@ class TendersController < ApplicationController
 
     if !is_current_company
 	    flash[:error]="Access denied!!"
-	    format.html { redirect_to root_path, notice: 'Access denited!!' } 
+	    redirect_to root_path
 
     else
 
