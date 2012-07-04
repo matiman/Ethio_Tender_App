@@ -26,14 +26,19 @@ class TendersController < ApplicationController
   # GET /tenders/1
   # GET /tenders/1.json
   def show
-
-# TODO	  We only want to see if that tender id belongs to a company
 	  
     @tender = Tender.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @tender }
+    if !is_current_company
+	    flash[:error]="Access denied!!"
+	    redirect_to root_path
+
+    else
+
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @tender }
+      end
     end
   end
 
@@ -51,8 +56,16 @@ class TendersController < ApplicationController
  #  TODO Same thing here edit only current companies tenders
   # GET /tenders/1/edit
   def edit
-    
+
     @tender = Tender.find(params[:id])
+	  
+    if !is_current_company
+	    flash[:error]="Access denied!!"
+	    redirect_to root_path
+
+    else
+
+    end
   end
 
   # POST /tenders
@@ -60,8 +73,9 @@ class TendersController < ApplicationController
   def create
     @tender = Tender.new(params[:tender])
 
-#    TODO Add company id to the tender .. 
+
     @tender.company_id=current_user.company_id
+    @tender.status="Initiated" #When a tender is first created its status is defaulted to intiated
 
     respond_to do |format|
       if @tender.save
@@ -77,6 +91,14 @@ class TendersController < ApplicationController
   # PUT /tenders/1
   # PUT /tenders/1.json
   def update
+
+        if !is_current_company
+	    flash[:error]="Access denied!!"
+	    redirect_to root_path
+
+    else
+	  
+	  
     @tender = Tender.find(params[:id])
 
     respond_to do |format|
@@ -88,26 +110,50 @@ class TendersController < ApplicationController
         format.json { render json: @tender.errors, status: :unprocessable_entity }
       end
     end
+   end
   end
 
   # DELETE /tenders/1
   # DELETE /tenders/1.json
   def destroy
+
+	  
     @tender = Tender.find(params[:id])
+
+        if !is_current_company
+	    flash[:error]="Access denied!!"
+	    redirect_to root_path
+
+    else
+
+
     @tender.destroy
 
     respond_to do |format|
       format.html { redirect_to tenders_url }
       format.json { head :no_content }
     end
+   end
   end
 
 
  	#should accessed from this controller for now????????????????????
 
 #	calculate the difference between tender opened and closing date to display it on the table
+
+
+	private 
+
+#	Remaining date for the tenders
 	def remaining_date(from_date,to_date) 
 		distance_of_time_in_words(from_date, from_date)  
+	end
+
+
+#	This method is used by the show and edit actions to check if the current user is trying to see or edit other company's tender
+	def is_current_company
+		current_user.company_id==@tender.company_id
+
 	end
 
 
