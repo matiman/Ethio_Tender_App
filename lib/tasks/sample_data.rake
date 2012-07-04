@@ -68,19 +68,27 @@ namespace :db do
 #Create random Tender and populate the db
      40.times do |n|
       title  = "#{Faker::Company.bs()} tender "
-      company_name = Faker::Company.name
+      buyer_name = Faker::Company.name
       opening_date=Time.at(rand * Time.now.to_i)
       closing_date=Time.at(opening_date + ( 8*7*24*60*60)) #add 8 weeks to the deadline
       bid_amount= rand(10000...100000)
       description=Faker::Lorem.paragraph(sentence_count = 3)
+
+      if n%3==0
+	      status="Closed"
+      else if n%3==1
+	      status="Intiated"
+      else status= "Won"
+      end
 	      
       
       tender=Tender.new(title: title,
-                   company_name: company_name,
+                   buyer_name: buyer_name,
                    opening_date: opening_date,
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
 		   bid_amount: bid_amount    ,
+		   status: status,
 		   description: description )
 
 #      Just to add the 10 companies' to different tenders
