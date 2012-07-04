@@ -86,7 +86,6 @@ amespace :db do
                    opening_date: opening_date,
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
-		   bid_amount: bid_amount    ,
 		   status: status[s], #to populate with different statuses from the status array
 		   description: description )
 
