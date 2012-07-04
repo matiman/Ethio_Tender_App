@@ -73,18 +73,13 @@ amespace :db do
       closing_date=Time.at(opening_date + ( 8*7*24*60*60)) #add 8 weeks to the deadline
       bid_amount= rand(10000...100000)
       description=Faker::Lorem.paragraph(sentence_count = 3)
-<<<<<<< HEAD
 
 
-      #Just to add different types of statuses     
-
-      
-	      
-=======
-      
+      #Just to add different types of statuses         
       status=Array["Initiated","Closed","Won","Lost"]
       s=n%4	      
->>>>>>> stage-1-and-2
+
+
       
       tender=Tender.new(title: title,
                    buyer_name: buyer_name,
