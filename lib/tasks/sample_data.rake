@@ -75,10 +75,11 @@ amespace :db do
       description=Faker::Lorem.paragraph(sentence_count = 3)
 
 
-      #Just to add different types of statuses     
+      #Just to add different types of statuses         
+      status=Array["Initiated","Closed","Won","Lost"]
+      s=n%4	      
 
-      
-	      
+
       
       tender=Tender.new(title: title,
                    buyer_name: buyer_name,
@@ -86,14 +87,13 @@ amespace :db do
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
 		   bid_amount: bid_amount    ,
-		   status: status,
+		   status: status[s], #to populate with different statuses from the status array
 		   description: description )
 
-#      Just to add the 10 companies' to different tenders
+#      To associate the 10 companies' to different tenders
             tender.company_id=Company.find((n/4)+1).id
 	    tender.save
 
      end
     end   
-
-  end
+end
