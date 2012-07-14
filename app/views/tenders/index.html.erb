@@ -65,7 +65,7 @@ $(document).ready(function(){
     <td >
 
 	    <%  if tender.closing_date.to_date < Date.today %>
-		    <FONT COLOR="red"><%= (Date.today-tender.closing_date).to_i %> passed</td>
+		    <FONT COLOR="red"><%= (Date.today-tender.closing_date).to_i %> days passed</td>
 
 	    <% else if day_diff > 10%>
 		    <FONT COLOR="green"><%= distance_of_time_in_words(tender.opening_date,tender.closing_date) %></td>	    			
