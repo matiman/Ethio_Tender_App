@@ -15,11 +15,15 @@ class TendersController < ApplicationController
 			    #tender_by_company_and_status("Closed", current_user.company.id)
 
 	  #  end
+   
+
     end
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @tenders }
+
     end
   end
 

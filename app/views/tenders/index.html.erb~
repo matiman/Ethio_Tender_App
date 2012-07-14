@@ -1,41 +1,70 @@
-<h1>Listing tenders</h1>
 
-	<table border="0">
-		<tr><td> Filter by status &nbsp; </td>
-			<td>
-			  <select>
-			    <option value="Initiated">Initiated</option>
-			    <option value="Closed">Closed</option>
-			    <option value="Won">Won</option>
-			    <option value="Lost">Lost</option>
-		    	  </select>
-		  </td></tr>
+<script>
+$(document).ready(function(){
+  $('#status').change(function(){  	//To display different tenders based on the status instead of using ajax .. Better way :)
+   
+	  var clas = $(this).val();
+	  if(clas=='All'){
+	    $('tr').show();
+
+          }
+	  else{
+
+	    $('tr.' + clas).show();
+	    $('tr[class!=' + clas + ']').hide();
+	    $('tr.table_header').show(); //not to hide the table header
+    }
+  });
+});
+    
+</script>
+
+
+<h1 id="header" style="color: #4682B4">Listing Tenders!</h1>
+<div class="row">
+	<div class="span6 offset3" id="we">
+
 		
 		
+		Filter by status &nbsp;
+
+		<%= form_tag tenders_path, :remote => true, :method=>'post' do %>
+			<%= select_tag("status", options_for_select([['All','All'],['Initiated','Initiated'],['Open', 'Opem'],
+				['Closed', 'Closed'],['Won','Won']])) %>				
+		
+
+		 <% end %>
+		
+		
+		 
+		<div id="flash"> </div>
 
 
-	</table>
+	</div>
 
-<table border="1">
-  <tr>
+</div>
+
+
+<table border="1" id="tender_table" >
+  <tr class="table_header">
     <th>Title</th>
     <th>Buyer Name</th>
     <th>Remaining dates</th>
     <th>Status</th>
     <th>Bid amount</th>
-    <%#   <th>Description</th> %>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @tenders.each do |tender| %>
-  <tr>
-    <td><%= tender.title %></td>
+<tr class=<%= tender.status %>> 
+<td><%= tender.title %></td>
     <td><%= tender.buyer_name %></td>
     <td><%= distance_of_time_in_words(tender.opening_date,tender.closing_date) %></td>
     <td><%= tender.status %></td>
     <td><%= tender.bid_amount %></td>
+   
 
     <%#  tender.description %>
 
@@ -49,3 +78,4 @@
 <br />
 
 <%= link_to 'New Tender', new_tender_path %>
+
