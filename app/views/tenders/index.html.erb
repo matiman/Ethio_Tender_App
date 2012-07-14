@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 		<%= form_tag tenders_path, :remote => true, :method=>'post' do %>
 			<%= select_tag("status", options_for_select([['All','All'],['Initiated','Initiated'],['Open', 'Opem'],
-				['Closed', 'Closed'],['Won','Won']])) %>				
+				['Closed', 'Closed'],['Won','Won'],['Lost','Lost']])) %>				
 		
 
 		 <% end %>
@@ -57,11 +57,31 @@ $(document).ready(function(){
     <th></th>
   </tr>
 
-<% @tenders.each do |tender| %>
+  <% @tenders.each do |tender| %>
+<% day_diff= tender.closing_date.to_date-tender.opening_date.to_date %>
 <tr class=<%= tender.status %>> 
 <td><%= tender.title %></td>
     <td><%= tender.buyer_name %></td>
-    <td><%= distance_of_time_in_words(tender.opening_date,tender.closing_date) %></td>
+    <td >
+
+	    <%  if tender.closing_date.to_date < Date.today %>
+		    <FONT COLOR="red"><%= (Date.today-tender.closing_date).to_i %> passed</td>
+
+	    <% else if day_diff > 10%>
+		    <FONT COLOR="green"><%= distance_of_time_in_words(tender.opening_date,tender.closing_date) %></td>	    			
+				    
+	    <% end %>
+	    <% end %>
+
+	    <% if day_diff <= 10 and day_diff>=0 %>
+			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.opening_date,tender.closing_date)+' ' %>left</td>
+
+	    <% end %>
+
+
+
+
+
     <td><%= tender.status %></td>
     <td><%= tender.bid_amount %></td>
    
