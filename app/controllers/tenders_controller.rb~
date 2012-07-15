@@ -41,7 +41,7 @@ class TendersController < ApplicationController
 	      flash[:error]="Couldn't find the specific tender"
 	      redirect_to root_path
 
-    
+    end
 
 
     if !is_current_company

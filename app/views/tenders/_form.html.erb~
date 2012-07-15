@@ -5,15 +5,18 @@
 		<%= form_for(@tender) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 
-			<% #Need to be in the model %>
+			<% if     params[:is_new]=='false' %>
+			<%= f.label :status %>
+			<%= f.select :status, options_for_select(["All",'Initiated','Open','Closed','Won','Lost']) %>
+
 			<%= f.select :category, options_for_select(["Finance","IT"]) %>
 
 			<%= f.label :title %>			
 			<%= f.text_field :title %>
 
 		
-			<%= f.label :company_name %>
-			<%= f.text_field :company_name %>
+			<%= f.label :buyer_name %>
+			<%= f.text_field :buyer_name %>
 
 			<%= f.label :opening_date %>
 			<%= f.date_select :opening_date %>
@@ -23,6 +26,7 @@
 
 			<%= f.label :bid_amount %>
 			<%= f.number_field :bid_amount %>
+
 
 			<%= f.label :description %>
 			<%= f.text_area :description, :size => "5x3" %>

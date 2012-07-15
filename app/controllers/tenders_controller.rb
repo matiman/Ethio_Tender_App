@@ -73,6 +73,7 @@ class TendersController < ApplicationController
   def edit
 
     @tender = Tender.find(params[:id])
+    params[:is_new]='false'
 	  
     if !is_current_company
 	    flash[:error]="Access denied!!"
