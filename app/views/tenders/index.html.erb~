@@ -1,8 +1,9 @@
 
 <script>
-$(document).ready(function(){
-  $('#status').change(function(){  	//To display different tenders based on the status instead of using ajax .. Better way :)
-   
+	$(document).ready(function(){
+
+	$('#status').change(function(){  	//To display different tenders based on the status instead of using ajax .. Better way :)
+
 	  var clas = $(this).val();
 	  if(clas=='All'){
 	    $('tr').show(); //Show all tr blocks
@@ -15,27 +16,39 @@ $(document).ready(function(){
 	    $('tr.table_header').show(); //not to hide the table header
     }
   });
+ 
 });
+	 
     
 </script>
 
 
 <h1 id="header" style="color: #4682B4">Listing Tenders!</h1>
 <div class="row">
-	<div class="span6 offset3" id="we">
+	<div class="span3 offset3">
 
 		
 		
 		Filter by status &nbsp;
+		<%= select_tag("status", options_for_select([['All','All'],['Initiated','Initiated'],['Open', 'Opem'],
+				['Closed', 'Closed'],['Won','Won'],['Lost','Lost']])) %>
+			
+		<% if(params[:bid_amount]=='true' ) %>
+				
+				
+		  <%= form_tag tender_path, :method=>'get' do %>
+				<%= submit_tag "Order by remaining date", class: "btn btn-large btn-primary" %>
+		  <% end %>
+		  <% else %>
 
-		<%= form_tag tenders_path, :remote => true, :method=>'post' do %>
-			<%= select_tag("status", options_for_select([['All','All'],['Initiated','Initiated'],['Open', 'Opem'],
-				['Closed', 'Closed'],['Won','Won'],['Lost','Lost']])) %>				
+				<%= form_tag bid_amount_path, :method=>'get' do %>
+							
 		
-
-		 <% end %>
+				
+				<%= submit_tag "Order by Bid Amount", class: "btn btn-large btn-primary" %>
+                  <% end %>
 		
-		
+		  <% end %>
 		 
 		<div id="flash"> </div>
 
@@ -58,23 +71,23 @@ $(document).ready(function(){
   </tr>
 
   <% @tenders.each do |tender| %>
-<% day_diff= tender.closing_date.to_date-tender.opening_date.to_date %>
+<% day_diff= tender.closing_date.to_date-Date.today %>
 <tr class=<%= tender.status %>> 
 <td><%= tender.title %></td>
     <td><%= tender.buyer_name %></td>
     <td >
 
-	    <%  if tender.closing_date.to_date < Date.today %>
-		    <FONT COLOR="red"><%= (Date.today-tender.closing_date).to_i %> passed</td>
+	    <%  if day_diff < 0 %>
+		<FONT COLOR="black"><%= -(day_diff).to_i %> days passed</td>
 
 	    <% else if day_diff > 10%>
-		    <FONT COLOR="green"><%= distance_of_time_in_words(tender.opening_date,tender.closing_date) %></td>	    			
+		    <FONT COLOR="green"><%= distance_of_time_in_words(tender.closing_date,Date.today) %></td>	    			
 				    
 	    <% end %>
 	    <% end %>
 
 	    <% if day_diff <= 10 and day_diff>=0 %>
-			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.opening_date,tender.closing_date)+' ' %>left</td>
+			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.closing_date,Date.today)+' ' %>left</td>
 
 	    <% end %>
 

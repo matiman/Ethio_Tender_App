@@ -6,27 +6,30 @@ class TendersController < ApplicationController
   # GET /tenders
   # GET /tenders.json
   def index
-    if signed_in?
+
   	    #if params[:status].nil?	    
 	#	    @tenders = current_user.company.tender #display only the current user's company's tenders . There is a method called 'tender' in the tender model
 	 #   else
-		    @tenders= Tender.where("company_id= ? ", current_user.company.id ) 
+	  #         
+                    if(@tenders==nil)
+		    @tenders= Tender.where("company_id= ? ", current_user.company.id).order('closing_date') 
 		    #@tenders= Tender.where("company_id= ? AND status= ?", current_user.company.id, "Closed" ) 
 			    #tender_by_company_and_status("Closed", current_user.company.id)
+		    end
 
 	  #  end
    
 
-    end
+
 
     respond_to do |format|
       format.html # index.html.erb
- #     format.js
       format.json { render json: @tenders }
 
     end
   end
 
+  
   # GET /tenders/1
   # GET /tenders/1.json
   def show
@@ -35,7 +38,7 @@ class TendersController < ApplicationController
 
     if !is_current_company
 	    flash[:error]="Access denied!!"
-	    format.html { redirect_to root_path, notice: 'Access denited!!' } 
+	    redirect_to root_path
 
     else
 
@@ -95,15 +98,13 @@ class TendersController < ApplicationController
   # PUT /tenders/1
   # PUT /tenders/1.json
   def update
-
+    @tender = Tender.find(params[:id])
         if !is_current_company
 	    flash[:error]="Access denied!!"
 	    redirect_to root_path
 
-    else
-	  
-	  
-    @tender = Tender.find(params[:id])
+    else  
+
 
     respond_to do |format|
       if @tender.update_attributes(params[:tender])
@@ -139,6 +140,25 @@ class TendersController < ApplicationController
     end
    end
   end
+
+
+def order_by_bid_amount_ajax
+
+
+
+    @tenders= Tender.where("company_id= ? ", current_user.company.id).order('bid_amount desc') 
+    
+
+    
+
+    #I think this does not even have to be here
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js
+    end
+  end
+
+
 
 
  	#should accessed from this controller for now????????????????????

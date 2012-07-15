@@ -17,6 +17,7 @@ class Tender < ActiveRecord::Base
 	#Add a company or a user id to associate with the tender. I prefer company
 	
 	def tender_by_company_and_status(status,company_id)
-		Tender.where("company_id= ? AND status= ?", company_id, params[:status] )
+		Tender.where("company_id= ? AND status= ?", company_id, params[:status] ).order("bid_amount")
 	end
+
 end

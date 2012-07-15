@@ -11,7 +11,7 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   
 
-
+  match '/bid_amount',		 to: 'tenders#order_by_bid_amount_ajax'
   match '/register_company',     to: 'companies#new'
   match '/signup',  		 to: 'users#new'
   match '/signin',		 to: 'sessions#new'

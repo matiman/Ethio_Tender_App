@@ -1,6 +1,6 @@
 class Tender < ActiveRecord::Base
 	#if they are not accessible we can't edit or create unaccessible fields
-#	Here I don't want to create a confusion between company_name and company_id. So I changed the company_name to buyer_name 
+       #Here I don't want to create a confusion between company_name and company_id. So I changed the company_name to buyer_name 
 	#the id is the company to which this tender belongs to (i.e Bidder)
 	attr_accessible :title, :buyer_name, :category, :opening_date, :closing_date, :bid_amount, :description, :status
 

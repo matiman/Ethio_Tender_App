@@ -1,0 +1,92 @@
+[33mcommit 1675df7111d87b418824aa513e1db8cec7c969d0[m
+Merge: c3bef7c 1412614
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Sat Jul 14 02:07:30 2012 -0500
+
+    Merge branch 'other-fixes'
+
+[33mcommit 141261496df4c219762133aafdc083a2457000b3[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Sat Jul 14 02:07:13 2012 -0500
+
+    simple message fix
+
+[33mcommit c3bef7c7f49a9bf005def275753bc12a55360c5b[m
+Merge: aa3bc9d 86c9870
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Sat Jul 14 01:52:42 2012 -0500
+
+    Merge branch 'other-fixes'
+
+[33mcommit 86c98705788ae8fdd3939af0c582f4034cb04265[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Sat Jul 14 01:52:02 2012 -0500
+
+    remaining dates colouring changed with appropriate messages
+
+[33mcommit aa3bc9d8e9503968aadb10c7df21578dcb1144f8[m
+Merge: fa9f1e8 8c11c0a
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Fri Jul 13 22:15:40 2012 -0500
+
+    Merge branch 'other-fixes'
+
+[33mcommit 8c11c0ab8d0294547bfc36d3d6e5d92662c71761[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Fri Jul 13 22:15:12 2012 -0500
+
+    displaying tenders based on statuses works like  a charm using jquery on client side without any ajax .. just showing and hiding the rows
+
+[33mcommit fa9f1e8bba1129199610487ad0a7ca06c44bd2b6[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 14:50:49 2012 -0500
+
+    minor change
+
+[33mcommit 270d92cb774fb643c4152f31bf631cdb7671b869[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 14:48:09 2012 -0500
+
+    can't view/change other companies tender
+
+[33mcommit bd4d012ff484e232f5c0170b6c70c8ede70bfa9e[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 14:05:16 2012 -0500
+
+    signup fixed to take us to company page instead of signing a user page .... becasue we shouldn't create a user if there is no company .. latter fix should be done to protect from ppl using the URL ... status defualted on creation of a tender
+
+[33mcommit 3f2c04a0051fab738f470211fc4e4975395dcd29[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 13:23:51 2012 -0500
+
+    task fix again
+
+[33mcommit b32733751dc277faba0010d01607ccae917cff16[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 13:16:37 2012 -0500
+
+    wtf .. task file
+
+[33mcommit dccb87adeef5dd2a688f42b313125a38458d5db0[m
+Merge: 20b1dae 58e3416
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 13:10:15 2012 -0500
+
+    task conflicted betweent stage 1&2 branch and master solved
+
+[33mcommit 58e3416cf0b1c2af1ab238778dac363a69a28bd4[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 13:05:17 2012 -0500
+
+    task file is now ok .. added different statuses on tenders
+
+[33mcommit 4a394d028dbf4027b4314dc16ba3132b7c78c8cc[m
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 11:48:20 2012 -0500
+
+    rake file updated .. still annoying
+
+[33mcommit 20b1daeb38cd5d5691aa77f658b39217f0a8bc42[m
+Merge: 6e2756e 03382e6
+Author: Mathias Abraham <bestmati1@gmail.com>
+Date:   Wed Jul 4 11:42:
