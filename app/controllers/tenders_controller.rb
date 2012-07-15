@@ -34,7 +34,15 @@ class TendersController < ApplicationController
   # GET /tenders/1.json
   def show
 	  
-    @tender = Tender.find(params[:id])
+    @tender = Tender.find_by_id(params[:id])
+   
+    #This shit is not working ... when a user tries to find a tender that doesnt exist i want to show an error message and redirect back to root
+    if @tender.nil?
+	      flash[:error]="Couldn't find the specific tender"
+	      redirect_to root_path
+
+    end
+
 
     if !is_current_company
 	    flash[:error]="Access denied!!"

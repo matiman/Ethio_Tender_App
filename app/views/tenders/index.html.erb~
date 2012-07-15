@@ -36,7 +36,7 @@
 		<% if(params[:bid_amount]=='true' ) %>
 				
 				
-		  <%= form_tag tender_path, :method=>'get' do %>
+		  <%= form_tag tenders_path, :method=>'get' do %>
 				<%= submit_tag "Order by remaining date", class: "btn btn-large btn-primary" %>
 		  <% end %>
 		  <% else %>
