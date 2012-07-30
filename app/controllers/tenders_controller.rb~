@@ -1,7 +1,7 @@
 class TendersController < ApplicationController
 
 
-	before_filter :signed_in_user
+	before_filter :signed_in_user, only: [:index, :edit, :update, :destroy] 
 
   # GET /tenders
   # GET /tenders.json
@@ -73,6 +73,7 @@ class TendersController < ApplicationController
   def edit
 
     @tender = Tender.find(params[:id])
+    params[:is_new]='false'
 	  
     if !is_current_company
 	    flash[:error]="Access denied!!"
