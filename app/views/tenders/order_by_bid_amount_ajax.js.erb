@@ -1,0 +1,17 @@
+
+$(document).ready(function(){
+		$('#bid_amount').change(function(){
+    
+			var bid=false;
+			if( $(this).val()=='1'){
+			bid=true;
+			}
+    $.ajax({
+      url: 'tenders/order_by_bid_amount_ajax?by_bid_amount=' +bid //or your custom address
+      success: function(serverResponse){
+        $('#tender_table').html(serverResponse);      //update the DOM
+      }
+    })*/
+  });
+});
+
