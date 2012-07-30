@@ -1,4 +1,4 @@
-<% provide(:title, 'Edit Company') %>
+<% provide(:title, 'Help') %>
 <h1>Editing company</h1>
 
 <%= render 'form' %>

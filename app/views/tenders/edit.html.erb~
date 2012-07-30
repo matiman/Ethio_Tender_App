@@ -1,6 +1,6 @@
-<% provide(:title, 'New Tender') %>
-<h1>New tender</h1>
+<h1>Editing tender</h1>
 
 <%= render 'form' %>
 
+<%= link_to 'Show', @tender %> |
 <%= link_to 'Back', tenders_path %>

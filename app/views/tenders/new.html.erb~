@@ -1,4 +1,3 @@
-<% provide(:title, 'New Tender') %>
 <h1>New tender</h1>
 
 <%= render 'form' %>

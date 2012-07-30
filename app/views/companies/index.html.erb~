@@ -1,6 +1,6 @@
 <h1>Listing companies</h1>
 
-<table>
+<table border='1'>
   <tr>
     <th>Name</th>
     <th>Address</th>

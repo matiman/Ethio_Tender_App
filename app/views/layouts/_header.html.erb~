@@ -1,10 +1,15 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "sample app", root_path, id: "logo" %>
+      <%= link_to "Ethio Tender App", root_path, id: "logo" %>
       <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
+      <ul class="nav pull-right">
+	      <% if signed_in? %>
+                <li><%= link_to "Tender", root_path %></li>
+	<% else %>
+		          <li><%= link_to "Home", root_path %></li>
+	      <% end %>
+
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>

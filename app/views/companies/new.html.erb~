@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', signup_path %>
-<%# Sign up after creating the company
+<%= link_to 'Back', companies_path %>

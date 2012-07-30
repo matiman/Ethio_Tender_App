@@ -1,4 +1,4 @@
-<% provide(:title, 'Show Company Details') %>
+<% provide(:title, 'Companies') %>
 <p id="notice"><%= notice %></p>
 
 <p>
