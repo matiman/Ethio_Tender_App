@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704022853) do
+ActiveRecord::Schema.define(:version => 20120803144529) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -34,15 +34,17 @@ ActiveRecord::Schema.define(:version => 20120704022853) do
   create_table "tenders", :force => true do |t|
     t.string   "title"
     t.string   "buyer_name"
-    t.date     "opening_date"
+    t.date     "announcement_date"
     t.date     "closing_date"
     t.decimal  "bid_amount"
     t.text     "description"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.string   "category",     :default => "General"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "category",          :default => "General"
     t.integer  "company_id"
     t.string   "status"
+    t.integer  "validity_days"
+    t.integer  "validity_day"
   end
 
   create_table "users", :force => true do |t|

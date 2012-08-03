@@ -1,4 +1,4 @@
-<% provide(:title, 'Help') %>
+<% provide(:title, 'Tenders') %>
 <script>
 	$(document).ready(function(){
 
@@ -71,7 +71,7 @@
   </tr>
 
   <% @tenders.each do |tender| %>
-<% day_diff= tender.closing_date.to_date-Date.today %>
+<% day_diff= (tender.closing_date + tender.validity_day).to_date-Date.today %>
 <tr class=<%= tender.status %>> 
 <td><%= tender.title %></td>
     <td><%= tender.buyer_name %></td>
@@ -81,13 +81,13 @@
 		<FONT COLOR="black"><%= -(day_diff).to_i %> days passed</td>
 
 	    <% else if day_diff > 10%>
-		    <FONT COLOR="green"><%= distance_of_time_in_words(tender.closing_date,Date.today) %></td>	    			
+		    <FONT COLOR="green"><%= distance_of_time_in_words(tender.closing_date + tender.validity_day,Date.today) %></td>	    			
 				    
 	    <% end %>
 	    <% end %>
 
 	    <% if day_diff <= 10 and day_diff>=0 %>
-			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.closing_date,Date.today)+' ' %>left</td>
+			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.closing_date + tender.validity_days,Date.today)+' ' %>left</td>
 
 	    <% end %>
 

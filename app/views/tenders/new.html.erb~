@@ -1,5 +1,0 @@
-<h1>New tender</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', tenders_path %>

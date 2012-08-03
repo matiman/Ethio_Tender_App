@@ -1,7 +1,7 @@
 class TendersController < ApplicationController
 
 
-	before_filter :signed_in_user, only: [:index, :edit, :update, :destroy] 
+	before_filter :signed_in_user
 
   # GET /tenders
   # GET /tenders.json
