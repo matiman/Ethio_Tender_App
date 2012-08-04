@@ -87,7 +87,7 @@
 	    <% end %>
 
 	    <% if day_diff <= 10 and day_diff>=0 %>
-			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.closing_date + tender.validity_days,Date.today)+' ' %>left</td>
+			    <FONT COLOR="red"><%=distance_of_time_in_words(tender.closing_date + tender.validity_day,Date.today)+' ' %>left</td>
 
 	    <% end %>
 
@@ -102,8 +102,11 @@
     <%#  tender.description %>
 
     <td><%= link_to 'Show', tender %></td>
+    <% if !current_user.isManagerial %>
     <td><%= link_to 'Edit', edit_tender_path(tender) %></td>
     <td><%= link_to 'Destroy', tender, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>

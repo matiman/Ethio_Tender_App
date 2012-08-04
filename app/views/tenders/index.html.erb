@@ -102,8 +102,11 @@
     <%#  tender.description %>
 
     <td><%= link_to 'Show', tender %></td>
+    <% if !current_user.isManager %>
     <td><%= link_to 'Edit', edit_tender_path(tender) %></td>
     <td><%= link_to 'Destroy', tender, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>
