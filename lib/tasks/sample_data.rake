@@ -83,7 +83,7 @@ namespace :db do
       
       tender=Tender.new(title: title,
                    buyer_name: buyer_name,
-                   opening_date: opening_date,
+                  # opening_date: opening_date,
                    closing_date: closing_date,
 		   bid_amount: bid_amount    ,
 		   status: status[s], #to populate with different statuses from the status array
