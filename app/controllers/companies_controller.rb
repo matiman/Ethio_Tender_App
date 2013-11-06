@@ -14,6 +14,7 @@ class CompaniesController < ApplicationController
     end
   end
 
+  #comment
   # GET /companies/1
   # GET /companies/1.json
   def show
